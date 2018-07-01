@@ -1,0 +1,16 @@
+#!/bin/bash
+
+HOMEINT=enp4s0
+PHONEINT=enp0s20u3
+
+if ! ip route | grep -q $PHONEINT; then
+  echo "Phone internet not connected"
+fi
+
+if ip route | grep -q $HOMEINT; then
+  ifdown $HOMEINT
+  echo "Home internet disabled"
+else
+  ifup $HOMEINT
+  echo "Home internet enabled"
+fi

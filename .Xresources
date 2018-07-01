@@ -1,0 +1,49 @@
+Xft.antialias: 1
+Xft.autohint: 0
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
+! color-settings
+
+*background: #1a1a1a
+*foreground: #aaaaaa
+
+! 0: black
+*color0:  #1a1a1a
+*color8:  #1a1a1a
+! 1: red
+*color1:  #9f6767
+*color9:  #9f6767
+! 2: green
+*color2:  #4b6946
+*color10: #92ac68
+! 3: yellow
+*color3:  #d0d293
+*color11: #d0d293
+! 4: blue
+*color4:  #9aacc3
+*color12: #9aacc3
+! 5: magenta
+*color5:  #bb77a4
+*color13: #bb77a4
+! 6: cyan
+*color6:  #77bbb5
+*color14: #77bbb5
+! 7: white
+*color7:  #aaaaaa
+*color15: #aaaaaa
+
+
+! urxvt
+
+URxvt.font:            xft:Inconsolata:size=13
+URxvt.urlLauncher:     firefox
+URxvt.scrollBar:       false
+URxvt.scrollBar_right: true
+URxvt.scrollColor:     #000000
+
+! rofi
+
+rofi.terminal: urxvt

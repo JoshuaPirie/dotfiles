@@ -1,0 +1,9 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "window.menuBarVisibility": "toggle",
+    "workbench.statusBar.feedback.visible": false,
+    "editor.fontFamily": "'Inconsolata', 'Material Icons', 'FontAwesome', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 17,
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.statusBar.visible": true
+}
