@@ -6,5 +6,6 @@
     "editor.fontSize": 17,
     "workbench.colorTheme": "Default Dark+",
     "workbench.statusBar.visible": true,
-    "git.enableSmartCommit": true
+    "git.enableSmartCommit": true,
+    "git.autofetch": true
 }
