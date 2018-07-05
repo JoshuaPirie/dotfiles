@@ -1,0 +1,14 @@
+*
+!.bin/*
+!.config/
+!.ncmpcpp/
+!config
+!*.conf
+!settings.(json|xml|ini)
+!*.sh
+!.Xresources
+!.bashrc
+!.fehbg
+!.profile
+!.xinitrc
+!.gitignore
