@@ -1,11 +1,20 @@
+# ignore everything by default
 *
-!.bin/*
+
+# add dirs containing configs
 !.config/
 !.ncmpcpp/
+
+# set filenames to add
 !config
 !*.conf
 !settings.(json|xml|ini)
 !*.sh
+
+# add scripts in .bin
+!.bin/*
+
+# add misc dotfiles
 !.Xresources
 !.bashrc
 !.fehbg
