@@ -8,5 +8,6 @@
     "workbench.statusBar.visible": true,
     "git.enableSmartCommit": true,
     "git.autofetch": true,
-    "git.confirmSync": false
+    "git.confirmSync": false,
+    "files.useExperimentalFileWatcher": true
 }
