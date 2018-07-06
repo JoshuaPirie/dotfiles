@@ -1,0 +1,340 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #222
+background-alt = #444
+;foreground = ${xrdb:color7:#222}
+foreground = #dfdfdf
+foreground-alt = #888
+foreground-alt-alt = #aaa
+primary = #d81b60
+primary-alt = #880e4f
+alert = #bd2c40
+
+[bar/monitor1]
+monitor = DVI-I-1
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Liberation Sans:fontformat=truetype:size=11:antialias=true;2
+font-1 = Material Icons:fontformat=truetype:size=13:antialias=false;4
+
+font-2 = Liberation Sans:fontformat=truetype:size=11:antialias=true;3
+font-3 = Material Icons:fontformat=truetype:size=17:antialias=false;6
+font-4 = Material Icons:fontformat=truetype:size=14:antialias=false;5
+font-5 = Material Icons:fontformat=truetype:size=11:antialias=false;4
+
+font-6 = Noto Sans CJK JP:fontformat=opentype:size=10:antialias=true;2
+font-7 = Noto Sans CJK KR:fontformat=opentype:size=10:antialias=true;2
+font-8 = Noto Sans CJK CS:fontformat=opentype:size=10:antialias=true;2
+font-9 = Noto Sans CJK CT:fontformat=opentype:size=10:antialias=true;2
+
+font-10 = FontAwesome:fontformat=truetype:size=10:antialias=true;2
+font-11 = Symbola:fontformat=truetype:size=13:antialias=true;2
+
+modules-left = i3
+modules-center = mpd
+modules-right = volume memory cpuusage cputemp date powermenu
+
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = pointer
+;cursor-scroll = ns-resize
+
+[bar/monitor2]
+monitor = DVI-D-0
+width = 100%
+height = 27
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Liberation Sans:fontformat=truetype:size=11:antialias=true;2
+font-1 = Material Icons:fontformat=truetype:size=13:antialias=false;4
+
+font-2 = Liberation Sans:fontformat=truetype:size=11:antialias=true;3
+font-3 = Material Icons:fontformat=truetype:size=17:antialias=false;6
+font-4 = Material Icons:fontformat=truetype:size=14:antialias=false;5
+font-5 = Material Icons:fontformat=truetype:size=11:antialias=false;4
+
+font-6 = Noto Sans CJK JP:fontformat=opentype:size=10:antialias=true;2
+font-7 = Noto Sans CJK KR:fontformat=opentype:size=10:antialias=true;2
+font-8 = Noto Sans CJK CS:fontformat=opentype:size=10:antialias=true;2
+font-9 = Noto Sans CJK CT:fontformat=opentype:size=10:antialias=true;2
+
+font-10 = FontAwesome:fontformat=truetype:size=10:antialias=true;2
+font-11 = Symbola:fontformat=truetype:size=13:antialias=true;2
+
+modules-left = i3
+modules-center = mpd
+modules-right = volume filesystem gpuusage gputemp date
+
+tray-position = right
+tray-padding = 0
+
+cursor-click = pointer
+cursor-scroll = pointer
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+pin-workspaces = true
+
+label-mode-padding = 4
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 4
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-foreground = ${colors.foreground-alt}
+label-unfocused-underline = ${colors.primary-alt}
+label-unfocused-padding = 4
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.primary}
+label-urgent-padding = 4
+
+[module/mpd]
+type = internal/mpd
+format-online = <icon-prev><toggle><icon-next>    <label-song>    <icon-repeat> <icon-single> <icon-random>
+
+icon-prev = 
+icon-play = 
+icon-pause = 
+icon-next = 
+icon-repeat = 
+icon-single = 
+icon-random = 
+;icon-repeat = 🔁
+;icon-single = 🔂
+;icon-random = 🔀
+
+icon-prev-font = 4
+icon-play-font = 4
+icon-pause-font = 4
+icon-next-font = 4
+icon-repeat-font = 5
+icon-single-font = 5
+icon-random-font = 5
+
+toggle-on-foreground = ${colors.foreground}
+toggle-off-foreground = ${colors.foreground-alt}
+
+label-song = %{A1:urxvt -e ncmpcpp &:}%artist%  –  %title%%{A}
+label-song-maxlen = 160
+label-song-ellipsis = true
+label-song-font = 3
+
+label-offline = 🎜 mpd is offline
+label-offline-font = 3
+
+[module/volume]
+type = custom/script
+exec = /home/joshua/.config/polybar/volume.sh
+interval = 0.5
+
+format-underline = #ab47bc
+format-padding = 1
+
+scroll-up = mpc volume +1
+scroll-down = mpc volume -1
+click-middle = /home/joshua/.config/polybar/togglemute.sh
+click-left = pavucontrol &
+
+[module/memory]
+type = internal/memory
+interval = 5
+
+format-prefix = "%{A1:urxvt -e htop &:} %{A}"
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #4caf50
+format-padding = 1
+
+label = %{A1:urxvt -e htop &:}%percentage_used%%%{A}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+format-mounted-prefix = "%{A1:nautilus &:} %{A}"
+format-mounted-prefix-font = 6
+format-mounted-prefix-foreground = ${colors.foreground-alt}
+format-mounted-underline = #4caf50
+format-mounted-padding = 1
+label-mounted = %{A1:nautilus &:}%percentage_used%%%{A}
+label-unmounted = %{A1:nautilus &:}%mountpoint% not mounted%{A}
+label-unmounted-foreground = ${colors.foreground-alt}
+format-unmounted-underline = #4caf50
+format-unmounted-padding = 1
+
+[module/cpuusage]
+type = internal/cpu
+interval = 5
+
+format-prefix = "%{A1:urxvt -e htop &:} %{A}"
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #fbc02d
+format-padding = 1
+
+label = %{A1:urxvt -e htop &:}%percentage:2%%%{A}
+
+[module/cputemp]
+type = internal/temperature
+interval = 5
+
+format-prefix = "%{A1:urxvt -hold -e sensors &:}  %{A}"
+format-prefix-foreground = ${colors.foreground-alt-alt}
+format-underline = #f44336
+format-padding = 1
+
+label = %{A1:urxvt -hold -e sensors &:}%temperature-c:2%%{A}
+
+[module/gpuusage]
+type = custom/script
+exec = /home/joshua/.config/polybar/gpuusage.sh
+interval = 5
+
+format-prefix = "%{A1:urxvt -hold -e nvidia-smi &:} %{A}"
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #fbc02d
+format-padding = 1
+
+label = %output:2%%
+
+[module/gputemp]
+type = custom/script
+exec = /home/joshua/.config/polybar/gputemp.sh
+interval = 5
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt-alt}
+format-underline = #f44336
+format-padding = 1
+
+label = %output:2%°C
+
+[module/date]
+type = internal/date
+interval = 1
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = ""
+format-prefix-font = 6
+format-prefix-foreground = ${colors.foreground-alt-alt}
+format-underline = #2196f3
+format-padding = 1
+
+label = %date% %time%
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+format-padding = 0
+
+label-open = 
+label-open-foreground = ${colors.primary}
+label-close = %{T5}%{T-}Cancel
+label-close-foreground = ${colors.primary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = Reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = Shutdown
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = Confirm Reboot
+menu-1-0-exec = systemctl reboot
+
+menu-2-0 = Confirm Shutdown
+menu-2-0-exec = systemctl poweroff
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+;margin-top = 5
+;margin-bottom = 5
+
+; vim:ft=dosini

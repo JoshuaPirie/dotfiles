@@ -1,18 +1,20 @@
 # ignore everything by default
 *
 
-# add dirs containing configs
-!.config/
-!.ncmpcpp/
-
 # set filenames to add
 !config
 !*.conf
 !settings.(json|xml|ini)
-!*.sh
 
-# add scripts in .bin
+# add dirs containing wanted files
+!.bin/
 !.bin/*
+!.config/
+!.config/i3/
+!.config/i3/*
+!.config/polybar/
+!.config/polybar/*
+!.ncmpcpp/
 
 # add misc dotfiles
 !.Xresources
