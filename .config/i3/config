@@ -119,6 +119,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym --release Shift+Print exec maim --hidecursor -s /mnt/d/Pictures/Screenshots/$(date +%FT%T).png
 bindsym Print exec maim --hidecursor /mnt/d/Pictures/Screenshots/$(date +%FT%T).png
 bindsym $mod+c exec xclip -o -selection primary | xclip -selection clipboard
+bindsym $mod+plus exec $HOME/.bin/brightness +0.02
+bindsym $mod+Shift+plus exec $HOME/.bin/brightness +0.1
+bindsym $mod+minus exec $HOME/.bin/brightness -0.02
+bindsym $mod+Shift+minus exec $HOME/.bin/brightness -0.1
 
 # media controls
 bindsym XF86AudioRaiseVolume exec mpc volume +1
@@ -154,12 +158,13 @@ workspace $ws9 output $secondary
 workspace $ws10 output $secondary
 
 # assign windows to workspaces
-assign [class="Firefox"] $ws1
-assign [class="Code"] $ws2
-assign [class="Steam"] $ws8
-assign [class="URxvt" title="ncmpcpp"] $ws9
-assign [class="TelegramDesktop"] $ws10
-assign [class="discord"] $ws10
+assign [class="^Firefox Developer Edition$"] $ws1
+assign [class="^Code$"] $ws2
+assign [class="^RocketLeague$"] $ws5
+assign [class="^Steam$"] $ws8
+assign [class="^URxvt$" title="^ncmpcpp$"] $ws9
+assign [class="^TelegramDesktop$"] $ws10
+assign [class="^discord$"] $ws10
 
 # steam floating
 for_window [class="^Steam$" title="^Friends$"] floating enable
@@ -173,6 +178,10 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 
+# rocket league fullscreen
+for_window [class="^RocketLeague$"] fullscreen enable
+for_window [class="^RocketLeague$"] floating disable
+
 # select workspace 10
 exec --no-startup-id i3-msg "workspace $ws10; append_layout $HOME/.config/i3/workspace-10.json"
 
@@ -180,6 +189,7 @@ exec --no-startup-id i3-msg "workspace $ws10; append_layout $HOME/.config/i3/wor
 exec --no-startup-id compton
 exec --no-startup-id copyq
 exec --no-startup-id $HOME/.fehbg
+exec_always --no-startup-id $HOME/.bin/brightness
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 exec --no-startup-id firefox

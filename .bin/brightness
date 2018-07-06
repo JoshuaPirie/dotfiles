@@ -1,0 +1,23 @@
+#!/bin/bash
+
+PRIMARY=DVI-I-1
+SECONDARY=DVI-D-0
+BRIGHTRC=${HOME}/.brightnessrc
+
+if [[ -f "$BRIGHTRC" ]]; then
+    LEVEL=`cat "$BRIGHTRC"`
+else
+    LEVEL=1
+fi
+
+case $1 in
+    "") LEVEL=1;;
+    +*) LEVEL=$(echo "$LEVEL + ${1:1}" | bc);;
+    -*) LEVEL=$(echo "$LEVEL - ${1:1}" | bc);;
+     *) LEVEL=$1;;
+esac
+
+xrandr --output $PRIMARY --brightness $LEVEL
+xrandr --output $SECONDARY --brightness $LEVEL
+
+echo $LEVEL > $BRIGHTRC

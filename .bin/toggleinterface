@@ -8,9 +8,9 @@ if ! ip route | grep -q $PHONEINT; then
 fi
 
 if ip route | grep -q $HOMEINT; then
-  ifdown $HOMEINT
+  sudo ifdown $HOMEINT
   echo "Home internet disabled"
 else
-  ifup $HOMEINT
+  sudo ifup $HOMEINT
   echo "Home internet enabled"
 fi
