@@ -9,5 +9,8 @@
     "git.enableSmartCommit": true,
     "git.autofetch": true,
     "git.confirmSync": false,
-    "files.useExperimentalFileWatcher": true
+    "files.useExperimentalFileWatcher": true,
+    "window.zoomLevel": 0,
+    "terminal.integrated.rendererType": "dom",
+    "extensions.ignoreRecommendations": false
 }
