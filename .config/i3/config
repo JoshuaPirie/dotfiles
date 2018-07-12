@@ -116,8 +116,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # custom command shortcuts
-bindsym --release Shift+Print exec maim --hidecursor -s /mnt/d/Pictures/Screenshots/$(date +%FT%T).png
-bindsym Print exec maim --hidecursor /mnt/d/Pictures/Screenshots/$(date +%FT%T).png
+bindsym Shift+Print exec "IMGPATH=/mnt/d/Pictures/Screenshots/$(date +%FT%T).png;maim --hidecursor --gracetime=1 -s $IMGPATH;copyq copy image/png - < $IMGPATH"
+bindsym Print exec "IMGPATH=/mnt/d/Pictures/Screenshots/$(date +%FT%T).png;maim --hidecursor $IMGPATH;copyq copy image/png - < $IMGPATH"
 bindsym $mod+c exec xclip -o -selection primary | xclip -selection clipboard
 bindsym $mod+plus exec $HOME/.bin/brightness +0.02
 bindsym $mod+Shift+plus exec $HOME/.bin/brightness +0.1

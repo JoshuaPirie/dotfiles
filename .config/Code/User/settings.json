@@ -12,5 +12,7 @@
     "files.useExperimentalFileWatcher": true,
     "window.zoomLevel": 0,
     "terminal.integrated.rendererType": "dom",
-    "extensions.ignoreRecommendations": false
+    "extensions.ignoreRecommendations": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false
 }
