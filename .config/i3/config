@@ -109,16 +109,22 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Control+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # custom command shortcuts
-bindsym Shift+Print exec "IMGPATH=/mnt/d/Pictures/Screenshots/$(date +%FT%T).png;maim --hidecursor --gracetime=1 -s $IMGPATH;copyq copy image/png - < $IMGPATH"
-bindsym Print exec "IMGPATH=/mnt/d/Pictures/Screenshots/$(date +%FT%T).png;maim --hidecursor $IMGPATH;copyq copy image/png - < $IMGPATH"
-bindsym $mod+c exec xclip -o -selection primary | xclip -selection clipboard
+bindsym $mod+Print exec --no-startup-id "pkill compton; maim -s --hidecursor | copyq write image/png - && copyq select 0; compton"
+bindsym Shift+Print exec "maim -i $(xdotool getactivewindow) --hidecursor | copyq write image/png - && copyq select 0"
+bindsym Print exec "maim --hidecursor | copyq write image/png - && copyq select 0"
+bindsym Control+Print exec "pkill compton && maim --hidecursor | copyq write image/png - && copyq select 0; compton"
+bindsym $mod+Shift+s exec "copyq clipboard image/png > /mnt/d/Pictures/Screenshots/$(date +%FT%T).png"
+bindsym $mod+Shift+g exec "IMGPATH=/mnt/d/Pictures/Screenshots/$(date +%FT%T).png; copyq clipboard image/png > $IMGPATH; gimp $IMGPATH"
+bindsym $mod+p exec --no-startup-id "pkill compton; copyq add $(gpick --single --output --no-newline) && copyq select 0; compton"
+bindsym $mod+c exec "pkill compton || compton"
+bindsym $mod+x exec "xclip -o -selection primary | xclip -selection clipboard"
 bindsym $mod+plus exec $HOME/.bin/brightness +0.02
 bindsym $mod+Shift+plus exec $HOME/.bin/brightness +0.1
 bindsym $mod+minus exec $HOME/.bin/brightness -0.02
@@ -177,6 +183,9 @@ for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
 for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
+
+# galculator
+for_window [class="^Galculator$"] floating enable
 
 # rocket league fullscreen
 for_window [class="^RocketLeague$"] fullscreen enable
