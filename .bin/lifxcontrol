@@ -3,17 +3,26 @@
 case $1 in
     power)
         TYPE="\x75\x00"
+        RESREQ="\x00"
         case $2 in
             on) POWER="\xff\xff";;
             off) POWER="\x00\x00";;
-            *) echo "invalid power state" && exit 1;;
+            *) echo "invalid power state"; exit 1;;
         esac
         TRANSITION0="\x00\x00\x00\x00"
         PAYLOAD="$POWER$TRANSITION0";;
-    *) echo "invalid command type" && exit 1;;
+    *) echo "invalid command type"; exit 1;;
 esac
 
-. "$HOME/.config/lifx/config"
+CONFIG="$HOME/.config/lifx/config"
+
+if [ -f "$CONFIG" ]; then
+    . "$CONFIG"
+else
+    MAC=00:00:00:00:00:00
+    IP=255.255.255.255
+    PORT=56700
+fi
 
 PROTOCOL="\x00\x14"
 SOURCE="\x00\x00\x00\x00"
@@ -21,10 +30,8 @@ FRAME="$PROTOCOL$SOURCE"
 
 TARGET="\x${MAC//:/\\x}"
 RESERVED1="\x00\x00\x00\x00\x00\x00\x00\x00"
-RESREQ="\x01"
-RESNOTREQ="\x00"
 SEQUENCE="\x01"
-FRAMEADDRESS="$TARGET$RESERVED1$RESNOTREQ$SEQUENCE"
+FRAMEADDRESS="$TARGET$RESERVED1$RESREQ$SEQUENCE"
 
 RESERVED2="\x00\x00\x00\x00\x00\x00\x00\x00"
 RESERVED3="\x00\x00"
@@ -32,8 +39,8 @@ PROTOCOLHEADER="$RESERVED2$TYPE$RESERVED3"
 
 PACKET="$FRAME$FRAMEADDRESS$PROTOCOLHEADER$PAYLOAD"
 
-LENGTH=$(($#PACKET / 4 + 2))
-HEXLEN="\x$(([##16]$(($LENGTH % 256))))\x$(([##16]$(($LENGTH >> 8))))"
+LENGTH=$((${#PACKET} / 4 + 2))
+HEXLEN="\x$(printf '%x' $((LENGTH % 256)))\x$(printf '%x' $((LENGTH >> 8)))"
 
 PACKET="$HEXLEN$PACKET"
 
