@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
 PRIMARY=DVI-I-1
 SECONDARY=DVI-D-0
-BRIGHTRC=${HOME}/.brightnessrc
+BRIGHTRC=$HOME/.brightnessrc
 
-if [[ -f "$BRIGHTRC" ]]; then
+if [ -e "$BRIGHTRC" ]; then
     LEVEL=`cat "$BRIGHTRC"`
 else
     LEVEL=1

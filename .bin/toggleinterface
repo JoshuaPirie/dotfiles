@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 HOMEINT=enp4s0
 PHONEINT=enp0s20u3

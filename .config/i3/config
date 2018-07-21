@@ -188,8 +188,8 @@ for_window [title="^Steam Keyboard$"] floating enable
 for_window [class="^Galculator$"] floating enable
 
 # rocket league fullscreen
-for_window [class="^RocketLeague$"] fullscreen enable
 for_window [class="^RocketLeague$"] floating disable
+# for_window [class="^RocketLeague$"] fullscreen enable
 
 # select workspace 10
 exec --no-startup-id i3-msg "workspace $ws10; append_layout $HOME/.config/i3/workspace-10.json"

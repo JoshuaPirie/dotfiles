@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 MINTEMP=35
 MAXTEMP=65
@@ -8,12 +8,12 @@ MAXPWM=255
 start() {
   while :; do
     TEMP=$(nvidia-smi -q -i 0 -d TEMPERATURE | grep -m 1 "GPU Current Temp" | sed -E "s/^.*: ([0-9]+) C$/\1/")
-    if [[ $TEMP -lt $MINTEMP ]]; then
+    if [ $TEMP -lt $MINTEMP ]; then
       PWM=0
-    elif [[ $TEMP -gt $MAXTEMP ]]; then
+    elif [ $TEMP -gt $MAXTEMP ]; then
       PWM=$MAXPWM
     else
-      PWM=$(($MINPWM + ((($MAXPWM - $MINPWM) / ($MAXTEMP - $MINTEMP)) * ($TEMP - $MINTEMP))))
+      PWM=$(echo "$MINPWM + ((($MAXPWM - $MINPWM) / ($MAXTEMP - $MINTEMP)) * ($TEMP - $MINTEMP))" | bc)
     fi
     echo $PWM > /sys/class/hwmon/hwmon1/pwm3
     sleep 5
