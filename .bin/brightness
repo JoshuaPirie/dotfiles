@@ -2,7 +2,7 @@
 
 PRIMARY=DVI-I-1
 SECONDARY=DVI-D-0
-BRIGHTRC=$HOME/.brightnessrc
+BRIGHTRC="$HOME/.brightnessrc"
 
 if [ -e "$BRIGHTRC" ]; then
     LEVEL=`cat "$BRIGHTRC"`
@@ -12,12 +12,11 @@ fi
 
 case $1 in
     "") LEVEL=1;;
-    +*) LEVEL=$(echo "$LEVEL + ${1:1}" | bc);;
-    -*) LEVEL=$(echo "$LEVEL - ${1:1}" | bc);;
-     *) LEVEL=$1;;
+    +*|-*) LEVEL=$(echo "0$LEVEL $1" | bc);;
+     *) LEVEL="$1";;
 esac
 
-xrandr --output $PRIMARY --brightness $LEVEL
-xrandr --output $SECONDARY --brightness $LEVEL
+xrandr --output "$PRIMARY" --brightness "$LEVEL"
+xrandr --output "$SECONDARY" --brightness "$LEVEL"
 
-echo $LEVEL > $BRIGHTRC
+echo "$LEVEL" > "$BRIGHTRC"

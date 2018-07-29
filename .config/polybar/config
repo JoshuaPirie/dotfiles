@@ -176,7 +176,7 @@ label-urgent-font = 12
 
 [module/mpd]
 type = internal/mpd
-format-online = <icon-prev><toggle><icon-next>    <label-song>    <icon-repeat> <icon-single> <icon-random>
+format-online = <icon-prev><toggle><icon-next>    <label-song>  <label-time>    <icon-repeat> <icon-single> <icon-random>
 
 icon-prev = 
 icon-play = 

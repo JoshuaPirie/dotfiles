@@ -14,5 +14,7 @@
     "terminal.integrated.rendererType": "dom",
     "extensions.ignoreRecommendations": false,
     "explorer.confirmDragAndDrop": false,
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "[python]": {},
+    "python.pythonPath": "/usr/bin/python"
 }

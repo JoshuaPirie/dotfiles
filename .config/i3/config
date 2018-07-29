@@ -125,10 +125,23 @@ bindsym $mod+Shift+g exec "IMGPATH=/mnt/d/Pictures/Screenshots/$(date +%FT%T).pn
 bindsym $mod+p exec --no-startup-id "pkill compton; copyq add $(gpick --single --output --no-newline) && copyq select 0; compton"
 bindsym $mod+c exec "pkill compton || compton"
 bindsym $mod+x exec "xclip -o -selection primary | xclip -selection clipboard"
-bindsym $mod+plus exec $HOME/.bin/brightness +0.02
-bindsym $mod+Shift+plus exec $HOME/.bin/brightness +0.1
-bindsym $mod+minus exec $HOME/.bin/brightness -0.02
-bindsym $mod+Shift+minus exec $HOME/.bin/brightness -0.1
+
+# monitor brightness controls
+bindsym Shift+XF86AudioRaiseVolume exec brightness +0.03
+bindsym Shift+XF86AudioLowerVolume exec brightness -0.03
+bindsym $mod+b exec brightness
+
+# light controls
+bindsym XF86Calculator exec lifxcontrol power on
+bindsym XF86Reload exec lifxcontrol power off
+bindsym $mod+XF86AudioRaiseVolume exec lifxcontrol brightness +1310
+bindsym $mod+XF86AudioLowerVolume exec lifxcontrol brightness -1310
+bindsym $mod+Shift+XF86AudioRaiseVolume exec lifxcontrol hue +1000
+bindsym $mod+Shift+XF86AudioLowerVolume exec lifxcontrol hue -1000
+bindsym $mod+Control+XF86AudioRaiseVolume exec lifxcontrol saturation +1000
+bindsym $mod+Control+XF86AudioLowerVolume exec lifxcontrol saturation -1000
+bindsym $mod+Control+Shift+XF86AudioRaiseVolume exec lifxcontrol kelvin +20
+bindsym $mod+Control+Shift+XF86AudioLowerVolume exec lifxcontrol kelvin -20
 
 # media controls
 bindsym XF86AudioRaiseVolume exec mpc volume +1
